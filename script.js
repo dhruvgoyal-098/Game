@@ -22,7 +22,6 @@ function initializeGame() {
   messageDisplay.textContent = `Make your first guess! You have ${maxAttempts} attempts.`;
   attemptsDisplay.textContent = `0 / ${maxAttempts}`;
   submitGuessButton.disabled = false;
-  console.log('Random Number:', randomNumber);
 }
 
 function handleGuess() {
