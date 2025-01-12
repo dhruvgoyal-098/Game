@@ -1,5 +1,5 @@
 
-let randomNumber;
+let gus;
 let attempts = 0;
 let maxAttempts = 10;
 let maxNumber = 100;
@@ -13,7 +13,7 @@ const guessHistory = document.getElementById('guess-history');
 const attemptsDisplay = document.getElementById('attempts');
 function initializeGame() {
   maxNumber = parseInt(difficultySelector.value);
-  randomNumber = Math.floor(Math.random() * maxNumber) + 1;
+  gus = Math.floor(Math.random() * maxNumber) + 1;
   attempts = 0;
   maxAttempts = 10;
   guessInput.value = '';
@@ -34,21 +34,21 @@ function handleGuess() {
   attempts++;
   attemptsDisplay.textContent = `${attempts} / ${maxAttempts}`;
 
-  if (userGuess === randomNumber) {
-    messageDisplay.textContent = `Correct! The number was ${randomNumber}.`;
+  if (userGuess === gus) {
+    messageDisplay.textContent = `Correct! The number was ${gus}.`;
     playSound('correct');
     endGame(true);
     return;
   }
 
   if (attempts >= maxAttempts) {
-    messageDisplay.textContent = `Game over! The number was ${randomNumber}.`;
+    messageDisplay.textContent = `Game over! The number was ${gus}.`;
     playSound('wrong');
     endGame(false);
     return;
   }
 
-  if (userGuess > randomNumber) {
+  if (userGuess > gus) {
     messageDisplay.textContent = 'Too high!';
   } else {
     messageDisplay.textContent = 'Too low!';
@@ -78,3 +78,5 @@ resetButton.addEventListener('click', initializeGame);
 difficultySelector.addEventListener('change', initializeGame);
 
 initializeGame();
+
+
